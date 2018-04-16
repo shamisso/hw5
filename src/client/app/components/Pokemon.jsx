@@ -10,7 +10,9 @@ export default class Pokemon extends PureComponent {
   }
   static propTypes = {
     name: PropTypes.string.isRequired,
-    url: PropTypes.string.isRequired,
+    url: PropTypes.string,
+    id: PropTypes.number.isRequired,
+    
   };
 
   static defaultProps = {
@@ -18,14 +20,14 @@ export default class Pokemon extends PureComponent {
   };
 
   render() {
-    console.log('here: ', this.props.route);
-    const { name, url} = this.props; 
+    
+    const { name, url, id} = this.props; 
     let pic = url.split('/')[url.split('/').length - 2];
     pic = +pic;
     let picWay = 'img/' + `${pic}` + `.png`
     
     return (
-      <Link to='/pokemon'>
+      <Link to={`/pokemon/${this.props.id}`}>
         <div>
         <ul>
           <li>Имя: {name}</li>

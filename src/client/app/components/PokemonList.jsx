@@ -30,12 +30,11 @@ export default class PokemonList extends PureComponent {
     }
 
     render() {
-        console.log(this.props);
         let  pokemons = []; 
         pokemons = this.props.pokemons;
         return (
             <div onWheel={this.scrollHandler} >
-                {pokemons.map(pokemon => <Pokemon name={pokemon.name} url={pokemon.url}/>)}
+                {pokemons.map((pokemon, index) => <Pokemon name={pokemon.name} url={pokemon.url} id={index} />)}
             </div>
         );
     }
